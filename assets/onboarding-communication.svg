@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 460" role="img" aria-labelledby="title desc">
+  <title id="title">Tenant communication</title><desc id="desc">A private message and complaint conversation between a tenant and property team</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff7ed"/><stop offset="1" stop-color="#ffedd5"/></linearGradient></defs>
+  <rect width="720" height="460" rx="40" fill="url(#bg)"/>
+  <circle cx="595" cy="83" r="82" fill="#fed7aa" opacity=".7"/><circle cx="102" cy="360" r="92" fill="#ffedd5" opacity=".8"/>
+  <rect x="72" y="82" width="576" height="295" rx="30" fill="#fff" stroke="#fed7aa" stroke-width="5"/>
+  <rect x="103" y="117" width="226" height="148" rx="20" fill="#f8fafc"/><circle cx="141" cy="158" r="23" fill="#f97316"/><circle cx="379" cy="158" r="23" fill="#4f46e5"/>
+  <text x="175" y="164" font-family="Arial" font-size="18" font-weight="700" fill="#334155">Tenant</text><text x="382" y="164" font-family="Arial" font-size="18" font-weight="700" fill="#334155">Property team</text>
+  <rect x="122" y="198" width="181" height="30" rx="15" fill="#ffedd5"/><rect x="347" y="198" width="181" height="30" rx="15" fill="#e0e7ff"/>
+  <path d="M173 278c-15 36-15 59 0 70M547 278c15 36 15 59 0 70" fill="none" stroke="#fdba74" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="360" cy="349" r="32" fill="#4f46e5"/><path d="m347 349 9 9 19-21" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="224" y="329" width="272" height="52" rx="26" fill="#fff" stroke="#cbd5e1" stroke-width="3"/><text x="360" y="360" text-anchor="middle" font-family="Arial" font-size="17" font-weight="700" fill="#4f46e5">Message sent</text>
+</svg>

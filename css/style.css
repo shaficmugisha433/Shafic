@@ -1,0 +1,159 @@
+/* RentManager rental dashboard custom styles */
+
+:root {
+  color-scheme: light;
+  --rent-primary: #4f46e5;
+  --rent-primary-dark: #3730a3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: #f8fafc;
+  color: #1f2937;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid rgba(79, 70, 229, 0.28);
+  outline-offset: 2px;
+}
+
+#sidebar-nav .nav-item {
+  position: relative;
+  overflow: hidden;
+}
+
+#sidebar-nav .nav-item::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: currentColor;
+  opacity: 0;
+  transition: opacity 160ms ease;
+}
+
+#sidebar-nav .nav-item:hover::before,
+#sidebar-nav .nav-item.active::before {
+  opacity: 1;
+}
+
+main tbody tr {
+  transition: background-color 150ms ease, transform 150ms ease;
+}
+
+main tbody tr:hover {
+  background: #f8fafc;
+}
+
+#row-dropdown {
+  position: fixed;
+  z-index: 70;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);
+  animation: dropdown-in 150ms ease-out both;
+}
+
+[id$="-modal"] {
+  animation: modal-backdrop-in 180ms ease-out both;
+}
+
+[id$="-modal"] > div {
+  animation: modal-card-in 190ms ease-out both;
+}
+
+[id$="-modal"] input,
+[id$="-modal"] select {
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+[id$="-modal"] input:focus,
+[id$="-modal"] select:focus {
+  border-color: #818cf8;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+  outline: none;
+}
+
+@keyframes dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes modal-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modal-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    overflow: auto;
+  }
+
+  #sidebar-nav {
+    width: min(18rem, calc(100vw - 2rem));
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  header {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1rem;
+  }
+
+  header button.bg-indigo-600 {
+    width: 2.5rem;
+    justify-content: center;
+    padding-inline: 0;
+    font-size: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Tenants | RentManager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.responsive.css">
+</head>
+
+<body class="min-h-screen bg-slate-50">
+    <div class="flex min-h-screen">
+        <aside id="sidebar"
+            class="fixed inset-y-0 left-0 z-50 hidden w-64 flex-col bg-slate-900 text-slate-300 md:flex">
+            <div class="flex h-16 items-center gap-3 border-b border-slate-800 px-5"><span
+                    class="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-600 text-white"><i
+                        data-lucide="building-2"></i></span><span
+                    class="text-lg font-bold text-white">RentManager</span></div>
+            <nav class="space-y-1 p-4"><a
+                    class="flex items-center gap-3 rounded-lg px-4 py-3 text-sm hover:bg-slate-800 hover:text-white"
+                    href="dashboard.html"><i data-lucide="layout-dashboard"></i>Dashboard</a><a
+                    class="flex items-center gap-3 rounded-lg px-4 py-3 text-sm hover:bg-slate-800 hover:text-white"
+                    href="properties.html"><i data-lucide="home"></i>Properties</a><a
+                    class="flex items-center gap-3 rounded-lg bg-indigo-600 px-4 py-3 text-sm text-white"
+                    href="tenants.html"><i data-lucide="users"></i>Tenants</a><a
+                    class="flex items-center gap-3 rounded-lg px-4 py-3 text-sm hover:bg-slate-800 hover:text-white"
+                    href="leases.html"><i data-lucide="file-check-2"></i>Leases</a><a
+                    class="flex items-center gap-3 rounded-lg px-4 py-3 text-sm hover:bg-slate-800 hover:text-white"
+                    href="payments.html"><i data-lucide="wallet"></i>Payments</a><a
+                    class="flex items-center gap-3 rounded-lg px-4 py-3 text-sm hover:bg-slate-800 hover:text-white"
+                    href="bank-accounts.html"><i data-lucide="banknote"></i>Bank Accounts</a><a
+                    class="flex items-center gap-3 rounded-lg px-4 py-3 text-sm hover:bg-slate-800 hover:text-white"
+                    href="mobile-money.html"><i data-lucide="smartphone"></i>Mobile Money</a><a
+                    class="flex items-center gap-3 rounded-lg px-4 py-3 text-sm hover:bg-slate-800 hover:text-white"
+                    href="maintenance.html"><i data-lucide="wrench"></i>Maintenance</a><a
+                    class="flex items-center gap-3 rounded-lg px-4 py-3 text-sm hover:bg-slate-800 hover:text-white"
+                    href="receipts.html"><i data-lucide="receipt-text"></i>Receipts</a><a
+                    class="flex items-center gap-3 rounded-lg px-4 py-3 text-sm hover:bg-slate-800 hover:text-white"
+                    href="reports.html"><i data-lucide="chart-no-axes-combined"></i>Reports</a></nav>
+            <div class="mt-auto border-t border-slate-800 p-4">
+                <div class="flex items-center gap-3"><span
+                        class="flex h-9 w-9 items-center justify-center rounded-full bg-slate-700 text-xs font-bold text-white">SM</span>
+                    <div>
+                        <p class="text-sm font-medium text-white">Shafic M</p>
+                        <p class="text-xs text-slate-400">Property Owner</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <div id="sidebar-overlay" class="fixed inset-0 z-40 hidden bg-slate-950/60 md:hidden"></div>
+        <div class="min-w-0 flex-1 md:ml-64">
+            <header class="sticky top-0 z-30 flex h-16 items-center justify-between border-b bg-white px-4 sm:px-7">
+                <div class="flex items-center gap-3"><button id="mobile-menu-button"
+                        class="rounded-lg p-2 hover:bg-slate-100 md:hidden"><i data-lucide="menu"></i></button>
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-[.18em] text-indigo-500">Resident Records</p>
+                        <h1 class="text-lg font-bold">Tenants</h1>
+                    </div>
+                </div><button data-confirm="Tenant record saved."
+                    class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white">Add tenant</button>
+            </header>
+            <main class="p-4 sm:p-7">
+                <div class="mb-6 flex flex-col justify-between gap-3 sm:flex-row"><input data-search type="search"
+                        placeholder="Search tenant, unit or email..."
+                        class="w-full rounded-xl border bg-white px-4 py-3 text-sm sm:max-w-md"><select
+                        class="rounded-xl border bg-white px-4 py-3 text-sm">
+                        <option>All statuses</option>
+                        <option>Active</option>
+                        <option>Pending</option>
+                        <option>Moved out</option>
+                    </select></div>
+                <div class="overflow-hidden rounded-2xl bg-white shadow-sm">
+                    <table class="w-full min-w-[760px] text-left text-sm">
+                        <thead class="bg-slate-50 text-xs uppercase tracking-wider text-slate-500">
+                            <tr>
+                                <th class="px-5 py-3">Tenant</th>
+                                <th class="px-5 py-3">Unit</th>
+                                <th class="px-5 py-3">Contact</th>
+                                <th class="px-5 py-3">Rent</th>
+                                <th class="px-5 py-3">Status</th>
+                                <th class="px-5 py-3">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-searchable="Alice Smith Apt 3A alice@example.com" data-status-row="active">
+                                <td class="px-5 py-4 font-semibold">Alice Smith</td>
+                                <td>Apt 3A</td>
+                                <td>alice@example.com</td>
+                                <td>$850</td>
+                                <td><span
+                                        class="rounded-full bg-emerald-100 px-2 py-1 text-xs font-semibold text-emerald-700">Active</span>
+                                </td>
+                                <td><button data-action="Tenant Alice Smith opened"
+                                        class="text-indigo-600">View</button></td>
+                            </tr>
+                            <tr data-searchable="Robert Johnson Apt 1B robert@example.com" data-status-row="active">
+                                <td class="px-5 py-4 font-semibold">Robert Johnson</td>
+                                <td>Apt 1B</td>
+                                <td>robert@example.com</td>
+                                <td>$950</td>
+                                <td><span
+                                        class="rounded-full bg-emerald-100 px-2 py-1 text-xs font-semibold text-emerald-700">Active</span>
+                                </td>
+                                <td><button data-action="Tenant Robert Johnson opened"
+                                        class="text-indigo-600">View</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+        <div id="toast"
+            class="pointer-events-none fixed bottom-5 right-5 z-50 translate-y-6 rounded-xl bg-slate-900 px-4 py-3 text-sm text-white opacity-0 transition">
+        </div>
+        <script src="assets/app.js"></script>
+</body>
+
+</html>

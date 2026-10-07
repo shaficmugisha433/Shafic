@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Create Tenant Account | RentManager</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.responsive.css">
+</head>
+<body class="min-h-screen bg-slate-950 p-4 text-slate-900">
+  <main class="mx-auto grid min-h-[calc(100vh-2rem)] max-w-6xl overflow-hidden rounded-3xl bg-white shadow-2xl lg:grid-cols-[.9fr_1.1fr]">
+    <section class="relative hidden overflow-hidden bg-indigo-700 p-12 text-white lg:flex lg:flex-col lg:justify-between">
+      <div class="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-indigo-500/30 blur-3xl"></div>
+      <div class="relative">
+        <a href="onboarding.html" class="flex items-center gap-3"><span class="flex h-12 w-12 items-center justify-center rounded-xl bg-white text-indigo-700"><i data-lucide="building-2" class="h-6 w-6"></i></span><span class="text-xl font-bold">RentManager</span></a>
+        <h1 class="mt-16 text-4xl font-bold">Your next rental experience starts here.</h1>
+        <p class="mt-5 max-w-md text-indigo-100">Create your tenant account, explore available rooms, make payments, and send private messages to the property team.</p>
+      </div>
+      <div class="relative rounded-2xl border border-white/10 bg-white/10 p-5"><div class="flex items-center gap-3"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-400 text-slate-950"><i data-lucide="shield-check"></i></span><div><p class="font-semibold">Private tenant account</p><p class="mt-1 text-sm text-indigo-100">No admin approval is needed to create a tenant account.</p></div></div></div>
+    </section>
+
+    <section class="flex items-center p-7 sm:p-12">
+      <form id="signup-form" class="w-full max-w-lg">
+        <div class="mb-8"><span class="text-xs font-bold uppercase tracking-[.2em] text-indigo-600">Tenant registration</span><h2 class="mt-3 text-3xl font-bold">Create your account</h2><p class="mt-2 text-sm text-slate-500">Enter your details below to access the tenant portal.</p></div>
+        <div class="space-y-5">
+          <label class="block text-sm font-semibold">Full name<input id="signup-name" type="text" required autocomplete="name" class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100"></label>
+          <label class="block text-sm font-semibold">Email address<input id="signup-email" type="email" required autocomplete="email" class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100"></label>
+          <label class="block text-sm font-semibold">Password<input id="signup-password" type="password" minlength="6" required autocomplete="new-password" class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100"></label>
+          <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm"><input id="signup-terms" type="checkbox" required class="mt-1"><span class="text-slate-600">I agree to use this tenant account for rental and property communication only. I understand that this demo stores accounts in this browser.</span></label>
+        </div>
+        <button type="submit" class="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 py-3 font-semibold text-white transition hover:bg-indigo-700">Create tenant account <i data-lucide="arrow-right" class="h-4 w-4"></i></button>
+        <p class="mt-6 text-center text-sm text-slate-500">Already have an account? <a href="login.html" class="font-semibold text-indigo-600">Sign in</a></p>
+        <p class="mt-3 text-center text-xs text-slate-400">Admin / Landlord accounts are created by the property administrator.</p>
+      </form>
+    </section>
+  </main>
+  <div id="toast" class="fixed bottom-5 right-5 z-50 translate-y-6 rounded-xl bg-slate-900 px-4 py-3 text-sm text-white opacity-0 transition"></div>
+  <script src="assets/app.js"></script>
+  <script>
+    document.getElementById('signup-form').addEventListener('submit', event => {
+      event.preventDefault();
+      const name = document.getElementById('signup-name').value.trim();
+      const email = document.getElementById('signup-email').value.trim().toLowerCase();
+      const password = document.getElementById('signup-password').value;
+      const requestedRole = 'tenant';
+      if (requestedRole !== 'tenant') {
+        showToast('Only tenant accounts can be created through this registration page.');
+        return;
+      }
+      const accounts = JSON.parse(localStorage.getItem('rentmanager-tenant-accounts') || '[]');
+      if (accounts.some(account => account.email === email)) {
+        showToast('An account with this email already exists.');
+        return;
+      }
+      accounts.push({ name, email, password, role: requestedRole, createdAt: new Date().toISOString() });
+      localStorage.setItem('rentmanager-tenant-accounts', JSON.stringify(accounts));
+      localStorage.setItem('rentmanager-current-user', JSON.stringify({ name, email, role: requestedRole }));
+      showToast('Tenant account created successfully.');
+      window.setTimeout(() => location.href = 'tenant/index.html', 450);
+    });
+  </script>
+</body>
+</html>
