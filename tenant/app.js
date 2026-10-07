@@ -1,6 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
   lucide.createIcons();
 
+  const currentUser = JSON.parse(localStorage.getItem('rentmanager-current-user') || 'null');
+  if (!currentUser || currentUser.role !== 'tenant') {
+    location.href = '../login.html';
+    return;
+  }
+
+  const name = currentUser.name || 'Tenant';
+  const email = currentUser.email || '';
+  const initials = name.split(' ').map(part => part[0]).join('').slice(0, 2).toUpperCase();
+  document.querySelectorAll('[data-user-name]').forEach(element => element.textContent = name);
+  document.querySelectorAll('[data-user-email]').forEach(element => element.textContent = email);
+  document.querySelectorAll('[data-user-role]').forEach(element => element.textContent = 'Tenant account');
+  document.querySelectorAll('[data-user-initials]').forEach(element => element.textContent = initials || '—');
+
+  document.getElementById('tenant-sign-out')?.addEventListener('click', () => {
+    localStorage.removeItem('rentmanager-current-user');
+    location.href = '../login.html';
+  });
+
   const sections = [...document.querySelectorAll('.tenant-section')];
   const title = document.getElementById('tenant-page-title');
   const sectionNames = {

@@ -34,6 +34,20 @@ select:focus-visible {
   outline-offset: 2px;
 }
 
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.6) transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.6);
+}
+
 #sidebar-nav .nav-item {
   position: relative;
   overflow: hidden;
